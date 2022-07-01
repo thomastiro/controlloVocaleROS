@@ -157,11 +157,7 @@ public class VistaPrincipale extends Fragment {
 
     private void daCancellare(String stringa){
         //nun aggia ra cunt a nsciun.
-        if(stringa.equalsIgnoreCase("chi t'è stramuort")){
-            viewStringaRisultato.setText("a te e famiglia coglione.");
-        } else if(stringa.equalsIgnoreCase("Pippo vai in bagno")){
-            viewStringaRisultato.setText("Suuubitooo!!!!");
-        } else if(stringa.equalsIgnoreCase("chi è l'autore dell'applicazione")){
+        if(stringa.equalsIgnoreCase("chi è l'autore dell'applicazione")){
             viewStringaRisultato.setText("THOMAS ANTONIO TIRONE");
         }
     }
