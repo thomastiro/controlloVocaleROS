@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#030307</color>
+    <color name="accent">#2196F3</color>
+    <color name="accent_dark">#2C333A</color>
+    <color name="grigio">#3C3C3C</color>
+    <color name="grigio_chiaro">#DDDDDD</color> <!-- -->
+    <color name="rosso">#A81616</color>
+    <color name="bianco">#FFFFFF</color>
+    <color name="verde">#00EF0A</color>
+
+    <color name="titoli_impostazioni">@color/rosso</color>
+    <color name="stringa_risultato">@color/primary_dark</color>
+    <color name="bottone_normale">@color/primary</color>
+    <color name="bottone_selezionato">@color/accent_dark</color>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:checkable="true"
+        android:checked="true"
+        android:id="@+id/check_amcl"
+        android:title="@string/checkUsareAmcl"/>
+    <item
+        android:checkable="true"
+        android:checked="true"
+        android:id="@+id/check_usa_dati_odom_per_timer"
+        android:title="@string/usaDatiOdomPerTimer"/>
+    <item
+        android:checkable="true"
+        android:checked="true"
+        android:id="@+id/check_rileva_ostacoli"
+        android:title="@string/checkRilevaOstacoli"/>
+    <item
+        android:title="@string/avviaJoystick"
+        android:id="@+id/menu_avvia_joystick" />
+    <item
+        android:title="@string/impostazioni"
+        android:id="@+id/menu_avvia_impostazioni" />
+    <item
+        android:title="@string/informazioni"
+        android:id="@+id/menu_informazioni"/>
+</menu>

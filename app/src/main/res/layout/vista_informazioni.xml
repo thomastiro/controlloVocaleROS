@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <!-- NOME E AUTORE-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stringaInfoApp"
+            android:textColor="@color/primary_dark"
+            android:textStyle="italic"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- ELENCO COMANDI COMANDI-->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/titoloComandi"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/stringaComandi" />
+        <View style ="@style/LineaSeparatriceOrizzontale"/>
+        <!-- INFO GENERALI-->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/infoGenerali"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/descrizioneInfoGenerali" />
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- AMCL e CORREZIONE TRAIETTORIA-->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/voceAMCL"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoAmclCorrezioneTraiettoria" />
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- TABELLE ODOM -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/voceOdometria"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoUsoTabelleDaOdom" />
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- TIMER -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/voceTimer"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoTimer" />
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- RILEVA OSTACOLI -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/voceRilevaOstacoli"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoRilevaOstacoli"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- AVANTI e INDIETRO-->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/avantiIndietro"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoAvantiIndietro"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- DESTRA e SINISTRA-->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/destraSinistra"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoDestraSinistra"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- ANGOLO -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/angolo" />
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoAngolo"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- FERMO -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/fermo"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoFermo" />
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- VAI IN POSIZIONE -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/vaiInPosizione"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoVaiInPosizione"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- SALVA POSIZIONE -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/salvaPosizione"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoSalvaPosizione"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- RIPOSIZIONA-->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/riposiziona"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/infoRiposiziona"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- TOPIC -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/topicUtilizzati"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/descrizioneTopicUtilizzati"/>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- SERVICE -->
+        <TextView style = "@style/TextViewTitolo" android:text="@string/serviceUtilizzati"/>
+        <TextView style = "@style/TextViewDescrizione" android:text="@string/descrizioneServiceUtilizzati"/>
+    </LinearLayout>
+</ScrollView>

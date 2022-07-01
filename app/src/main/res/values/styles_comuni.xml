@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name ="LineaSeparatriceOrizzontale">
+        <item name ="android:layout_width">match_parent</item>
+        <item name ="android:layout_height">1dp</item>
+        <item name ="android:background">@color/grigio</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+
+    <style name="LineaSeparatriceVerticale">
+        <item name ="android:layout_width">1dp</item>
+        <item name ="android:layout_height">match_parent</item>
+        <item name ="android:background">@color/grigio</item>
+        <item name ="android:layout_marginLeft">3dp</item>
+        <item name ="android:layout_marginRight">3dp</item>
+    </style>
+
+    <style name="SliderGriglia">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:stepSize">2.0</item>
+        <item name="android:valueFrom">0.0</item>
+        <item name="android:valueTo">100.0</item>
+        <item name="android:value">20.0</item>
+    </style>
+
+    <style name="CasellaInfoMovimento">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:text">""</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TextViewBaseWrap">
+        <item name ="android:layout_width">wrap_content</item>
+        <item name ="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name ="TextViewTitolo" parent="TextViewBaseWrap">
+        <item name ="android:textColor">@color/rosso</item>
+    </style>
+
+    <style name="TextViewDescrizione" parent="TextViewBaseWrap">
+    </style>
+</resources>

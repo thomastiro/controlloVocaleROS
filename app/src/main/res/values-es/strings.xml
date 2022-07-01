@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Control de voz ROS</string>
+    <string name="nomeAcJoystick">joystick ROS</string>
+    <string name="stringaOk">ok</string>
+    <string name="si">sí</string>
+    <string name="no">no</string>
+    <string name="eliminare">eliminar</string>
+    <string name="stringaFunzione">Control de robot de voz</string>
+    <string name="impostazioni">ajustes</string>
+    <string name="riconnetti">reconectar</string>
+    <string name="checkUsareAmcl">amcl y corrección de trayectoria</string>
+    <string name="usaDatiOdomPerTimer">utilizar tablas de odometría</string>
+    <string name="checkRilevaOstacoli">detecta obstáculos</string>
+    <string name="avviaJoystick">iniciar el joystick</string>
+    <string name="informazioni">información y comandos</string>
+    <string name="testoBenvenuto">¡Hola! presione el micrófono para dar un comando de voz</string>
+    <string name="velocità">velocidad</string>
+    <string name="nodoNCM">no está conectado a un nodo master</string>
+    <string name="nodoI">nodo inicializado correctamente</string>
+    <string name="nodoNI">Hay un problema. Nodo no inicializado</string>
+    <string name="errMaster">no conectado al nodo maestro o nodo no existente</string>
+    <string name="nodoSpento">el nodo se apagó correctamente</string>
+    <string name="nodoNSpento">no fue posible apagar el nodo</string>
+    <string name="posizioneSalvata">ubicación guardada</string>
+    <string name="dialMesPosSalvate">¿Quieres mantener las posiciones guardadas anteriormente?</string>
+    <string name="dialTitPosSalvate">Tus ubicaciones guardadas</string>
+    <string name="dialTitTempi">Datos de odometría</string>
+    <string name="dialMesTempi">¿Desea utilizar datos de odometría previamente guardados para el temporizador?</string>
+    <string name="tabEliminata">tabla eliminada</string>
+    <string name="tabNoEliminata">no se puede eliminar la tabla de valores</string>
+    <string name="noTabella">la tabla no existe</string>
+    <string name="tentRecuperoDaTopic">Intenta recuperar datos del topic:</string>
+    <string name="tabellaCreata">tabla creada a partir de datos de odometría</string>
+    <string name="errCreazioneTabella">Error al crear tabla a partir de datos de odometría</string>
+    <string name="errRecuperoDaOdometria">Error de recuperación de datos de odometría</string>
+    <string name="testoSecondiAcc">aceleración (s)</string>
+    <string name="testoSecondiFre">frenado (s)</string>
+    <string name="testoNumeroOdomMemorizzati">valores /odom guardados</string>
+    <string name="testoAccMetri">aceleración (m)</string>
+    <string name="testoAccRadianti">aceleración (rad)</string>
+    <string name="testoFreMetri">frenado (m)</string>
+    <string name="testoFreRadianti">frenado (rad)</string>
+    <!-- impostazioni-->
+    <string name="dimensioniGriglia">Tamaño de la cuadrícula</string>
+    <string name="mostraGriglia">mostrar cuadrícula</string>
+    <string name="titoloImpostazioniTabelle">Tablas obtenidas de odometría</string>
+    <string name="tabella">tabla</string>
+    <!-- avanti per tabella-->
+    <string name="avanti">adelante</string>
+    <string name="indietro">atrás</string>
+    <string name="sinistra">izquierda</string>
+    <string name="destra">derecha</string>
+    <string name="posizione">posición</string>
+    <string-array name="string_spinner_tabelle">
+        <item>@string/avanti</item>
+        <item>@string/indietro</item>
+        <item>@string/destra</item>
+        <item>@string/sinistra</item>
+    </string-array>
+    <string name="stringaInfoApp">
+        \nEsta aplicación le permite controlar un robot diferencial que utiliza ROS 1 mediante comandos de voz o la pantalla táctil.
+        \nLas bibliotecas alfa rosjava y ros-android se utilizan para este propósito .
+        \nIdiomas soportados italiano, inglés y español.\n
+        \nCurso de Grado en Informática
+        \nUniversità della Basilicata\n
+        \nAutor: Thomas Antonio Tirone\n</string>
+    <string name="titoloComandi">COMANDOS DISPONIBLES</string>
+    <string name="stringaComandi">Comandos de voz disponibles:\n
+        - ADELANTE e RETROCEDER\n   <!-- ADELANTE y ATRÁS -->
+        - DERECHA e IZQUIERDA\n
+        - ÁNGULO\n
+        - DETENER\n
+        - IR A LA POSICIÓN\n
+        - GUARDAR LA POSICIÓN\n
+        - REPOSICIÓN
+        \nDescrito en detalle más adelante.\n
+        \nControles táctiles disponibles:
+        \n- IR A LA POSICIÓN
+        \nEquivalente al comando de voz, donde para indicar la posición hay que mantener pulsado un punto en el mapa y girar la
+        flecha para indicar su orientación. Enviar ubicación al topic /move_base_simple/goal .\n
+        \n- JOYSTICK
+        \nFunción accesible desde el menú, mediante la cual se muestra un joystick virtual con el que es posible enviar mensajes
+        al topic /cmd_vel para mover el robot.\n
+    </string>
+    <string name="infoGenerali">INFORMACIÓN GENÉRICA</string>
+    <string name="descrizioneInfoGenerali">
+        - En el caso de una conexión lenta o una pérdida excesiva de paquetes, la aplicación puede tartamudear, incluso parecer
+        que se bloquea o ser un poco imprecisa. Se paciente.\n
+        \n- La aplicación intenta, si es posible, sincronizar con la hora del servidor del proveedor ntp:\n
+        - nombre DNS: ntp1.inrim.it\n
+        - Dirección IP: 193.204.114.232\n
+        \n- El mapa visible se representa en función de los mensajes que provienen de los topic:\n
+        - /map\n
+        - /scan\n
+        - /move_base/NavfnROS/plan\n
+        - /move_base_simple/goal\n
+        - /move_base/current_goal
+        \nEl mapa puede tener un tamaño máximo de 512 x 512 píxeles, de lo contrario se recortará.\n
+        \n- Es posible visualizar un plano cartesiano (XY) superpuesto al mapa y que tiene el mismo origen. El plano cartesiano se puede
+        cambiar de tamaño u ocultar en la configuración de la aplicación. La unidad de medida utilizada en el plan es el metro (m).\n
+        \n- Si hay más \'comandos válidos\' dentro de la misma frase vocal reconocida: se tomará el último.\n
+        \n- Para separar los decimales de la parte entera en un valor numérico, puede usar un punto (.) o una coma (,).\n
+        \n- Las velocidades lineales y angulares máximas enviadas son de 0,22 m/s y 0,22 rad/s respectivamente.\n
+    </string>
+    <string name="voceAMCL">AMCL Y CORRECCIÓN DE TRAYECTORIA</string>
+    <string name="infoAmclCorrezioneTraiettoria">
+        El elemento de menú \'amcl y corrección de trayectoria\' le permite utilizar los mensajes provenientes del topic /amcl_pose
+        del nodo AMCL (Adaptive Monte Carlo Localization), que se ejecuta en otro dispositivo y está conectado al mismo maestro,
+        para ejecutar comandos como:\n
+        - \'ADELANTE e RETROCEDER\'\n
+        - \'DERECHA e IZQUIERDA\'\n
+        - \'ÁNGULO\'
+        \nLos comandos cuyo valor se exprese en segundos (s) siempre se ejecutarán utilizando el temporizador.
+        \nEsta función, a diferencia del temporizador, permite, en la medida de lo posible, orientarse en un entorno conocido,
+        corregir la trayectoria y la odometría del robot.
+        \n\nFUNCIONAMIENTO
+        \n- (Solo para \'ADELANTE e RETROCEDER\') Dado el comando, el objetivo se muestra en el mapa, representado por un círculo
+        verde con un radio de 0,05 metros (m).
+        \n\n- (Solo para \'ADELANTE e RETROCEDER\') Durante la marcha del robot hacia el objetivo, en cada mensaje se calcularán
+        las dos semirrectas que parten de su posición actual y que son tangentes a la circunferencia del círculo. Ahora bien,
+        si la dirección de movimiento del robot no cae entre los dos semirrectas: el robot se detendrá y se corregirá su dirección antes
+        de volver a empezar.
+        \nSi el ángulo entre las dos semirrectas fuese inferior a 2° por exceso de distancia: se mantiene igual a 2°.
+        \n\n- Al acercarse al objetivo, el movimiento del robot se ralentiza.
+        \n\n- Si el robot supera al objetivo, se detendrá y luego se invertirá su marcha.
+        \n\n- Si se hacen demasiados intentos para corregir, el robot se detendrá y el comando se cancelará.
+        \n\nEn relación con la información contenida en los mensajes y utilizando cualquier tabla de odometría, se considera alcanzado un
+        objetivo cuando se espera que el robot pueda ser detenido:\n
+        - dentro del círculo verde.\n
+        - cerca del ángulo que se desea alcanzar, con una tolerancia de 1,0 grado (°) desde el mismo.\n
+    </string>
+    <string name="voceOdometria">UTILIZAR TABLAS DE ODOMETRÍA</string>
+    <string name="infoUsoTabelleDaOdom">
+        El elemento de menú \'utilizar tablas de odometría\' permite la creación y el uso de tablas de aceleración y frenado de
+        un robot en los diversos tipos de movimiento y funciones tales como:\n
+        - adelante, atrás, izquierda y derecha\n
+        - \'detecta obstáculos\' y \'amcl y corrección de trayectoria\'.
+        \n\nLas tablas se crean en base a la información contenida en los mensajes recibidos sobre el topic /odom.
+        Las tablas solo se pueden crear si el comando se ejecuta a través del temporizador, por lo que \'amcl y corrección de
+        trayectoria\' debe estar deshabilitado o el nodo AMCL no debe estar en ejecución.
+        \n- En la tabla de aceleración se encuentran los valores que hacen que el robot pase de estar parado a una velocidad
+        constante (0.22m/s).
+        \n- La tabla de frenado contiene los valores que hacen que el robot pase de la velocidad constante a cero (0.0 m/s).
+        \n- La velocidad constante es el promedio de los valores entre las dos tablas.
+        \nPara que la creación de las tablas sea exitosa, no debe haber pérdida de paquetes (mensajes) durante la fase de creación
+        de las dos tablas.
+        \nPuedes ver los detalles de las tablas o borrarlas dentro de la configuración de la aplicación.
+        \nSi es necesario, se utiliza la interpolación lineal sobre los valores presentes en una sola tabla o en ambas, en este
+        caso simultáneamente, para obtener la información necesaria para ejecutar el comando.
+        \n\nSi no se han creado las tablas o si no desea utilizarlas: los valores relativos de aceleración y frenado se
+        consideran instantáneos.
+    </string>
+    <string name="voceRilevaOstacoli">DETECTA OBSTÁCULOS</string>
+    <string name="infoRilevaOstacoli">
+        El elemento de menú \'detectar obstáculos\' permite, como se indica en el título, la detección de cualquier obstáculo
+        durante la ejecución de los comandos de tipo \'ADELANTE e RETROCEDER\' únicamente.
+        \nEn el caso de que se detecte un objeto en el sentido de movimiento actual, a una distancia inferior a 0,25 metros (m)
+        más la distancia de frenado a la velocidad actual obtenida de las tablas de odometría: el robot se detendrá inmediatamente
+        y también la ejecución del comando actual.
+        \nPara que esto funcione es necesario que el topic /scan a suscribir esté presente y que las características del sensor
+        de escaneo, contenidas en los mensajes, reflejen las siguientes características:\n
+        - angle_min = 0.0 rad\n
+        - angle_max &gt;= 6.28 rad\n
+        - range_min &lt;= 0.25 m.\n
+    </string>
+    <string name="voceTimer">TEMPORIZADOR</string>
+    <string name="infoTimer">
+        El temporizador se utiliza en caso de que el nodo AMCL no esté disponible o el elemento \'amcl y corrección de trayectoria\'
+        no esté marcado. Los tipos de mandos compatibles con el temporizador son:
+        - ADELANTE e RETROCEDER\n   <!-- ADELANTE y ATRÁS -->
+        - DERECHA e IZQUIERDA\n
+        \nEl temporizador, para ejecutar el mando, no utiliza la posición actual, sino que se precalcula el tiempo necesario para
+        ejecutar el mando, utilizando o no, por elección o ausencia, las relativas tablas de valores de odometría.
+        Por lo tanto, la ejecución del comando utilizando el temporizador no permite corregir la trayectoria si es necesario
+        (por ejemplo, patinaje de la rueda).\n
+    </string>
+    <string name="avantiIndietro">ADELANTE e RETROCEDER</string>
+    <string name="infoAvantiIndietro">
+        Este comando se puede ejecutar usando \'amcl y corrección de trayectoria\' o el \'temporizador\'.
+        \nEl comando le permite mover el robot hacia adelante o hacia atrás. Las velocidades lineales se envían a topic /cmd_vel.
+        \nEn el comando se puede especificar la distancia en metros (m) a recorrer o su duración en segundos (s).
+        \n- Si el valor proporcionado es negativo, el comando no será válido.
+        \n- Si no se especifica o es incorrecto, el valor predeterminado será 1,0 m.
+        \n\nEjemplos de trabajo:\n
+        - podrías continuar por 2 metros\n
+        - retroceder 10,53 m\n
+        - adelante por 5.4 segundos gracias\n
+        - adelante ==> {1.0 m}\n
+        </string>
+    <string name="destraSinistra">DERECHA e IZQUIERDA</string>
+    <string name="infoDestraSinistra">
+        Este comando se puede ejecutar usando \'amcl y corrección de trayectoria\' o el \'temporizador\'.
+        \nEl comando le permite girar el robot sobre sí mismo hacia la derecha o hacia la izquierda.
+        Las velocidades angulares se envían a topic /cmd_vel.
+        \nEn el comando puede especificar el valor del ángulo en grados (°) a realizar o la duración del comando en segundos (s).
+        \n- Si el valor proporcionado es negativo, el comando no será válido.
+        \n- Los valores superiores a 360 grados se convierten siguiendo la lógica de la aritmética modular \'mod 360\'.
+        \n- Si no se especifica o es incorrecto, el valor predeterminado será 90°.
+        \n\nEjemplos de trabajo:\n
+        - gira a la derecha 270,5 grados\n
+        - podrías girar a la izquierda 15 grados\n
+        - gire a la derecha por 3 segundos por favor\n
+        - izquierda ==> {90.0°}\n
+    </string>
+    <string name="angolo">ÁNGULO</string>
+    <string name="infoAngolo">
+        El comando le permite orientar el robot al ángulo dado; para conocer su orientación actual, el elemento del menú
+        \'amcl y corrección de trayectoria\' debe estar marcado y funcionando.
+        \nExcepto CASO ESPECIAL, es necesario especificar el valor en grados del ángulo a alcanzar, incluso negativo
+        (por ejemplo -90° ≡ 270°).
+        \nLos valores mayores a 360° o menores a -360° se convierten siguiendo la lógica de la aritmética modular \'mod 360\'.
+        \n\nEjemplos de trabajo:\n
+        - ángulo 200°\n
+        - ir al ángulo de -90.5 grados\n
+        - podrías ir al ángulo de 450 grados ==> {450° ≡ 90.0° (mod 360)}\n
+        \nEjemplos que no funcionan.\n
+        - ángulo ==> {falta el valor}\n
+        - esquina ==> {falta el valor}\n
+        - ángulo ==> {el valor no esta en grados}\n
+        \nCASO ESPECIAL
+        \nPara la sola palabra \'enderezar\', o equivalente, si no se especifica el valor del ángulo, se considera que es 0,0°.
+        \n\nEjemplos:\n
+        - enderezado ==> {0.0°}\n
+        - puedes enderezarte ==> {0.0°}\n
+    </string>
+    <string name="fermo">DETENER</string>
+    <string name="infoFermo">
+        El comando le permite detener el robot inmediatamente y cancelar el comando actual.
+        \n\nEjemplos:\n
+        - detener\n
+        - stop\n
+    </string>
+    <string name="vaiInPosizione">IR A LA POSICIÓN</string>
+    <string name="infoVaiInPosizione">
+        El comando te permite publicar un mensaje de posición (x, y, orientación) sobre al topic /move_base_simple/goal.
+        \nEl escenario de uso típico prevé que: si se inicia un nodo /move_base y se conecta al mismo master, se suscribe al tema y ejecuta
+        el comando conduciendo el robot de forma autónoma a la posición enviada.
+        \Se puede especificar una ubicación:\n
+        - a través de un nombre guardado\n
+        - indicando el valor asociado a los componentes\n
+        \nOPERACIÓN POR NOMBRE
+        \nSi desea utilizar un nombre, debe haberlo guardado correctamente, previamente, mediante un comando como \'GUARDAR LA POSICIÓN\'.
+        \n\nEjemplos:\n
+        - ir al baño\n
+        - ve a la cocina\n
+        - podrías ir a la entrada 1 gracias\n
+        \nFUNCIONAMIENTO INDICANDO LOS COMPONENTES
+        \n- La orientación se puede especificar con las palabras: \'orientación\', \'omega\' o \'w\'.
+        \n- Dentro de la frase se buscarán los nombres de los componentes asociados cada uno con un valor numérico, sin restricciones de orden.
+        \n- Si los mismos componentes asociados a un valor numérico están presentes varias veces: se tomará el primer resultado y se eliminarán
+        los demás de la oración.
+        \n- Si uno o todos los componentes asociados con un valor no están presentes, pero solo están presentes los valores numéricos, estos valores
+        llenarán los \'agujeros\' siguiendo un orden FIFO (primero en entrar, primero en salir).
+        \n- Si no es posible encontrar el valor de x o y de ninguna manera, la posición no se enviará (el comando no es válido).
+        \n- Si no es posible encontrar solo la \'orientación\' de ninguna manera, por defecto, su valor será 0.0°.
+        \n\nEjemplos:\n
+        - ir a posición x -3.4 y 2.3 orientación -15 grados\n
+        ==> {-3.4, 2.3, -15.0}\n
+        - ir a posición orientación -90° la y -3.2 4\n
+        ==> {4.0, -3.2, 270.0}\n
+        - irías a y -4.1 luego y -3.2 4.5 x 1.0 y 2.2 \n
+        ==> {1.0, -4.1, 4.5}\n
+        - ir a y -4.1 luego y -3.2 x 1.0 y 2.2\n
+        ==> {1.0, -4.1, 0.0}\n
+        - ir a la posición y -4.1 luego y -3.2 1.0 y 2.2\n
+        ==> {1.0, -4.1, 0.0}\n
+        - podrias ir en la posicion 3.0 -2.3 gracias\n
+        ==> {3.0, -2.3, 0.0}\n
+        - ir a 3.0 -2.3 560\n
+        ==> {3.0, -2.3, 200}\n
+        - ir a la tabla x y -4.1 luego x y -3.2 4.5 orientación 1.0 y 2.2 \n
+        ==> {4.5, -4.1, 1.0}\n
+        \nEjemplos que no funcionan:\n
+        - ir a 2.3\n
+        ==> {falta y}\n
+        - ir a posición 3.0 orientación -60.3 \n
+        ==> {falta y}\n
+        - ir a x rocco y -4.1 luego x y -3.2 orientación 1.0 y 2.2\n
+        ==> {falta x}\n
+        - ir a la posición x 2,0 x 3,0 x 4,0\n
+        ==> {falta y}\n
+    </string>
+    <string name="salvaPosizione">GUARDAR LA POSICIÓN</string>
+    <string name="infoSalvaPosizione">
+        Para utilizar el comando, necesariamente debe estar disponible el topic /acml_pose del nodo AMCL.
+        \nEl comando le permite guardar la posición actual publicada por el tema asociándolo con un nombre. Para que el mandato sea válido,
+        la frase debe cumplir estas condiciones:
+        \n- hay una expresión similar a los ejemplos válidos.
+        \n- el nombre a guardar respeta la forma:\n [nombre/número] [número] (opcional).
+        \n- el nombre dado no es una palabra clave. Ejemplo: adelante, adelante 1, guardar, x, etc.
+        \n\nEjemplos válidos:\n
+        - podrías guardar la posición con el nombre origen gracias\n ==> origen\n
+        - guardar posición como tabla 1\n ==> tabla 1\n
+        - hola guardar posición como tabla 4.4 gracias\n ==> tabla 4\n
+        - almacena esta posición como tabla dd1\n ==> tabla\n
+        - almacena esta posición como posición 2\n ==> posición 2\n
+        - podrías memorizar la posición con el nombre tabla 1rocco gracias\n ==> tabla 1\n
+    </string>
+    <string name="riposiziona">REPOSICIÓN</string>
+    <string name="infoRiposiziona">
+        Este comando es el equivalente de \'2D Pose Estimate\' que se encuentra en RViz. Sirve básicamente para publicar una posición
+        (x, y, orientación) asociada a una matriz de covarianza, siempre fija, sobre el topic /initialpose.
+        \nLos valores de covarianza presentes en la matriz entre las variables, como lo hace RViz, son iguales a 0: es decir, no existe relación
+        entre ellas; mientras que el valor de la varianza de las variables individuales (los elementos de la diagonal principal) son
+        respectivamente 0,25, 0,25 y alrededor de 0,0685.
+        \nEl uso típico de este comando prevé que un nodo AMCL se suscriba al tema y use el mensaje publicado para reposicionar el robot en una
+        posición determinada en caso de que se pierda y no corrija automáticamente su pose real en el entorno conocido.
+        \nHay 2 formas en que puede recuperar los valores asociados con los componentes (variables).\n
+        \nPRIMER CAMINO
+        \n- Especificando dónde debe estar, indicando sus componentes x, y, orientación.
+        \n- Para recuperar el valor asociado a los componentes, utiliza lo mismo \'funcionamiento\' que el comando \'IR A LA POSICIÓN\'.
+        \n- En caso de que no se obtenga un resultado útil: se utilizará la segunda vía.
+        \n\nEjemplos:\n
+        - puedes reposicionarte en x 1 y -1,2 y orientacion 15.0 gracias\n ==> {1.0, -1.2, 15.0}\n
+        - podrías reposicionarte en x 1 y -1,2\n ==> {1.0, -1.2, 0.0}\n
+        \nSEGUNDO CAMINO
+        \nEs especialmente útil cuando la distancia desde la posición donde debería estar el robot es relativamente cercana.
+        \nEl topic /amcl_pose (del nodo AMCL) debe estar disponible. El primer mensaje de posición publicado sobre el tema, aunque sea
+        incorrecto, se utiliza para forzar el reposicionamiento.
+        \n\nEjemplos:\n
+        - reposicionar\n
+        - puedes reposicionarte en x 1.2 orientación 0.0\n ==> {falta la y, por lo que se usa la segunda via}\n
+    </string>
+    <string name="topicUtilizzati">TOPIC ROS</string>
+    <string name="descrizioneTopicUtilizzati">
+        El nombre y tipo de mensaje (msg) de todos los topic a los que la aplicación podría suscribirse o publicar.
+        \nSUSCRIBIRSE:\n
+        nombre: /amcl/parameter_updates\n <!--sottoscrittore-->
+        msg: dynamic_reconfigure/Config\n\n
+        nombre: /amcl_pose\n              <!--sottoscrittore-->
+        msg: geometry_msgs/PoseWithCovarianceStamped\n\n
+        nombre: /clock\n                  <!--sottoscrittore-->
+        msg: /rosgraph_msgs/Clock\n\n
+        nombre: /map\n                    <!--sottoscrittore-->
+        msg: nav_msgs/OccupancyGrid\n\n
+        nombre: /move_base/current_goal\n <!--sottoscrittore-->
+        msg: geometry_msgs/PoseStamped\n\n
+        nombre: /move_base/NavfnROS/plan\n<!--sottoscrittore-->
+        msg: nav_msgs/Path\n\n
+        nombre: /odom\n                   <!--sottoscrittore-->
+        msg: nav_msgs/Odometry\n\n
+        nombre: /scan\n                   <!--sottoscrittore-->
+        msg: sensor_msgs/LaserScan\n\n
+        nombre: /tf\n                     <!--sottoscrittore-->
+        msg: tf2_msgs/TFMessage\n\n
+        nombre: /tf_static\n              <!--sottoscrittore-->
+        msg: tf2_msgs/TFMessage\n
+        \nPUBLICAR:\n
+        nombre: /cmd_vel\n                <!--pubblicatore-->
+        msg: geometry_msgs/Twist\n\n
+        nombre: /initialpose\n            <!--pubblicatore-->
+        msg: geometry_msgs/PoseWithCovarianceStamped\n\n
+        nombre: /move_base/cancel\n       <!--pubblicatore-->
+        msg: actionlib_msgs/GoalID\n\n
+        nombre: /move_base_simple/goal\n  <!--pubblicatore-->
+        msg: geometry_msgs/PoseStamped\n
+    </string>
+    <string name="serviceUtilizzati">SERVICE ROS:</string>
+    <string name="descrizioneServiceUtilizzati">
+        Nombre: /amcl/set_parameters
+        \nmensaje: dynamic_reconfigure/Reconfigure
+        \n\nDESCRIPCIÓN
+        \nLa comunicación con el servicio ocurre cuando el elemento del menú \'amcl y corrección de trayectoria\' está marcado
+        y el nodo AMCL, externo a la aplicación, pero conectado al mismo master, está en ejecución.
+        \nEsto es necesario para que pueda recibir los mensajes de actualización de posición proporcionados por topic /amcl_pose
+        lo más rápido posible.
+        \nLa operación consiste en el cambio automático del valor de los siguientes parámetros de servicio:\n
+        - update_min_d = 0.0;\n
+        - update_min_a = 0.0;\n
+        \nCuando se cierra la aplicación, se restaurarán los valores de los parámetros.\n
+    </string>
+    <!-- toast -->
+    <string name="confAMCL_OK">Envío exitoso de nueva configuración de servicio AMCL</string>
+    <string name="confAMCL_NO">No se pudo enviar la nueva configuración del servicio AMCL</string>
+    <string name="erroreServiceAMCL">no fue posible conectarse al servicio AMCL</string>
+    <string name="cmdFallito">comando no reconocido</string>
+    <string name="cmdFallitoNO_AMCL">el comando falló, intente habilitar AMCL</string>
+    <string name="obbRagSi">¡objetivo alcanzado!</string>
+    <string name="obbRagNo">objetivo no alcanzado</string>
+    <string name="velAngR">velocidad angular reducida</string>
+    <string name="velLinR">velocidad lineal reducida</string>
+    <string name="obbSuperato">meta superada. Inversión de velocidad</string>
+    <string name="timerNuovo">reinicio del temporizador</string>
+    <string name="timerComandoNo">comando no disponible para el temporizador</string>
+    <string name="problemaInputVocale">El dispositivo no es compatible con la entrada de voz</string>
+    <string name="problemaTimeout">Error de tiempo de espera.\nNo hay respuesta después de esperar 10 segundos.</string>
+    <string name="ostacoloRilevato">¡obstáculo detectado!</string>
+    <string name="noLaser">No se pueden detectar obstáculos. El sensor lidar no cumple con las características requeridas.</string>
+    <string name="erroreRiposizioneAMCL">Imposible de reposicionar. No hay topic amcl_pose.</string>
+    <string name="okRiposizione">Envío de la reposición en:</string>
+    <!-- stringhe per masterchoser-->
+    <string name="use_master">Conectar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="qr_code">leer código QR</string>
+    <string name="master_uri_hint">http://localhost:11311/</string>
+    <string name="new_master">nuevo master público</string>
+    <string name="new_private_master">nuevo master privado</string>
+    <string name="show_advanced">mostrar opciones avanzadas</string>
+    <string name="select_interface">Seleccione la interfaz de red</string>
+    <string name="uri_text">Master URI:</string>
+    <string name="connection_text">Estoy llegando al nodo master&#8230;</string>
+</resources>

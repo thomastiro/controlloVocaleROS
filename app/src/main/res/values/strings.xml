@@ -1,0 +1,402 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">voice control ROS  </string>
+    <string name="nomeAcJoystick">joystick ROS</string>
+    <string name="stringaOk">ok</string>
+    <string name="si">yes</string>
+    <string name="no">none</string>
+    <string name="eliminare">delete</string>
+    <string name="stringaFunzione">Voice robot control</string>
+    <string name="impostazioni">settings</string>
+    <string name="riconnetti">reconnect</string>
+    <string name="checkUsareAmcl">amcl and trajectory correction</string>
+    <string name="usaDatiOdomPerTimer">use odometry tables</string>
+    <string name="checkRilevaOstacoli">detect obstacles</string>
+    <string name="avviaJoystick">start joystick</string>
+    <string name="informazioni">info and commands</string>
+    <string name="testoBenvenuto">Hi! press the microphone to give a command</string>
+    <string name="velocità">speed</string>
+    <string name="nodoNCM">not connected to master node</string>
+    <string name="nodoI">node successfully initialized</string>
+    <string name="nodoNI">there is a problem. Node not initialized</string>
+    <string name="errMaster">not connected to the master node or the node does not exist</string>
+    <string name="nodoSpento">node was shut down successfully</string>
+    <string name="nodoNSpento">node could not be turned off</string>
+    <string name="posizioneSalvata">saved location</string>
+    <string name="dialMesPosSalvate">Do you want to keep the previously saved positions?</string>
+    <string name="dialTitPosSalvate">Your saved locations</string>
+    <string name="dialTitTempi">Odometry data</string>
+    <string name="dialMesTempi">Do you want to use odometry data previously saved for the timer?</string>
+    <string name="tabEliminata">table deleted</string>
+    <string name="tabNoEliminata">could not delete table</string>
+    <string name="noTabella">The table does not exist. </string>
+    <string name="tabellaCreata">created table from odometry data</string>
+    <string name="errCreazioneTabella">Error creating table from odometry data</string>
+    <string name="tentRecuperoDaTopic">Attempt to recover data from the topic: </string>
+    <string name="errRecuperoDaOdometria">Odometry data recovery error</string>
+    <string name="testoSecondiAcc">acceleration (s)</string>
+    <string name="testoSecondiFre">braking (s)</string>
+    <string name="testoNumeroOdomMemorizzati">/odom values saved</string>
+    <string name="testoAccMetri">acceleration (m)</string>
+    <string name="testoAccRadianti">acceleration radians</string>
+    <string name="testoFreMetri">braking (m)</string>
+    <string name="testoFreRadianti">braking (rad)</string>
+    <!-- stringhe impostazioni -->
+    <string name="dimensioniGriglia">Grid size</string>
+    <string name="mostraGriglia">show grid</string>
+    <string name="titoloImpostazioniTabelle">Tables obtained from odometry</string>
+    <string name="tabella">table</string>
+    <!-- -->
+    <string name="avanti">forward</string>
+    <string name="indietro">back</string>
+    <string name="sinistra">left</string>
+    <string name="destra">right</string>
+    <string name="posizione">position</string>
+    <string-array name="string_spinner_tabelle">
+        <item>@string/avanti</item>
+        <item>@string/indietro</item>
+        <item>@string/destra</item>
+        <item>@string/sinistra</item>
+    </string-array>
+    <!-- -->
+    <string name="stringaInfoApp">
+        \nThis application allows you to control by voice and via the touchscreen a differential robot that uses ROS 1.
+        \nThe libraries alfa rosjava and ros-android are used for this purpose.
+        \nLanguage supports Italian, English and Spanish.\n
+        \nDegree in Computer Science\n
+        \nUniversity of Basilicata\n
+        \nAuthor: Thomas Antonio Tirone\n</string>
+    <string name="titoloComandi">AVAILABLE COMMANDS</string>
+    <string name="stringaComandi">Voice commands available:\n
+        - FORWARD and BACK\n
+        - RIGHT and LEFT\n
+        - ANGLE\n
+        - STOP\n
+        - GO TO POSITION\n
+        - SAVE THE POSITION\n
+        - REPOSITION
+        \nDescribed in detail later.\n
+        \nTouch controls available:\n
+        - GO TO POSITION
+        \nEquivalent of the voice command, where to indicate the position you have to hold down a point on the map and rotate the
+        arrow to indicate its orientation. Send location to topic /move_base_simple/goal .\n
+        - JOYSTICK
+        \nFunction accessible from the menu, through which a virtual joystick is shown with which it is possible to send messages to
+        the topic /cmd_vel to move the robot.\n
+    </string>
+    <string name="infoGenerali">GENERAL INFORMATION</string>
+    <string name="descrizioneInfoGenerali">
+        - In the event of a slow connection or excessive packet loss, the application may stutter, even seem frozen, or be a
+        little inaccurate. Be patient.\n
+        \n- The application tries, if possible, to synchronize with the ntp provider server time:\n
+        - DNS name: ntp1.inrim.it\n
+        - IP address: 193.204.114.232\n
+        \n- The viewable map is rendered on the basis of messages from the topics:\n
+        - /map\n
+        - /scan\n
+        - /move_base/NavfnROS/plan\n
+        - /move_base_simple/goal\n
+        - /move_base/current_goal
+        \nThe map can have a maximum size of 512 x 512 pixels, otherwise it will be cropped.\n
+        \n- It is possible to visualize a Cartesian plane (XY) superimposed on the map and which shares its origin. The Cartesian
+        plane can be resized or hidden in the application settings. The unit of measurement used in the plan is the meter (m).\n
+        \n- If there are more \'valid commands\' within the same recognized vocal phrase: the last one will be taken over.\n
+        \n- To separate the decimals from the integer part in a numeric value, you can use either a point (.) or a comma (,).\n
+        \n- The maximum linear and angular velocities sent are 0.22 m/s and 0.22 rad/s respectively.\n
+    </string>
+    <string name="voceAMCL">AMCL and TRAJECTORY CORRECTION</string>
+    <string name="infoAmclCorrezioneTraiettoria">
+        The menu item \'amcl and trajectory correction\' allows you to use the messages coming from the topic /amcl_pose of the
+        AMCL (Adaptive Monte Carlo Localization) node, running on another device and connected to the same master, to execute
+        commands like:\n
+        - \'FORWARD and BACK\'\n
+        - \'RIGHT and LEFT\'\n
+        - \'ANGLE\'
+        \nCommands whose value is expressed in seconds (s) will always be executed using the timer.
+        \nThis function, unlike the timer, allows, as far as possible, to orientate oneself in a known environment, correct the
+        trajectory and the odometry of the robot.
+        \n\nOPERATION
+        \n- (Only for \'FORWARD and BACK\') Given the command, the target is shown on the map, represented by a green circle
+        with a radius of 0.05 meters (m).
+        \n\n- (Only for \'FORWARD and BACK\') During the march of the robot towards the target, at each message, the two
+        half-lines that originate in its current position and that are tangent to the circumference of the circle will be calculated.
+        Now, if the direction of movement of the robot does not fall between the two rays: the robot will be stopped and its
+        direction will be corrected before starting again.
+        \nIf the angle between the two half-lines should be less than 2° due to excessive distance: it is kept equal to 2°.
+        \n\n- When approaching the target, the robot\'s movement is slowed down.
+        \n\n- Should the robot overtake the target, it will be stopped and then its gear will be reversed.
+        \n\n- If too many attempts are made to correct, the robot will be stopped and the command canceled.
+        \n\nIn relation to the information contained in the messages and using any odometry tables, an objective is considered achieved when
+        it is expected that the robot can be stopped:\n
+        - inside the green circle.\n
+        - in proximity to the angle to be reached, with a tolerance of 1.0 degree (°) from it.\n
+    </string>
+    <string name="voceOdometria">USE ODOMETRY TABLES</string>
+    <string name="infoUsoTabelleDaOdom">
+        The menu item \'use odometry tables\' allows the creation and use of acceleration and braking tables of a robot in the
+        various types of movement and functions such as:\n
+        - forward, backward, right and left\n
+        - \'detect obstacles\' and \'amcl and trajectory correction\'.
+        \n\nThe tables are created on the basis of the information contained in the messages received on the topic /odom.
+        Tables can only be created if the command is executed via the timer, so either \'amcl and trajectory correction\'
+        must be disabled or the AMCL node must not be running.
+        \n- The acceleration table shows the values that bring the robot from a standstill to a steady speed (0.22 m/s).
+        \n- The braking table contains the values that bring the robot from the operating speed to a speed of 0.0 m/s.
+        \n- The steady state speed is the average of the values between the two tables.
+        \nFor the creation of the tables to be successful, there must be no packet losses (messages) during the creation
+        phase of the two tables.
+        \nIt is possible to view the details of the tables or delete them within the application settings.
+        \nIf necessary, linear interpolation is used on the values present on a single or both tables, in this case
+        simultaneously, to obtain the information necessary to carry out the command.
+        \n\nIf the tables have not been created or do not want to use: the relative acceleration and braking values are
+        considered instantaneous.
+    </string>
+    <string name="voceRilevaOstacoli">DETECT OBSTACLES</string>
+    <string name="infoRilevaOstacoli">
+        The menu item \'detect obstacles\' allows, as per the title, the detection of any obstacles during the execution of the
+        commands of the \'FORWARD and BACK\' type only.
+        \nIn the event that an object is detected in the current direction of movement, at a distance of less than 0.25 meters (m)
+        plus the braking distance at the current speed obtained from the odometry tables: the robot will immediately stop running
+        and the execution of the current command.
+        \nFor this to work it is necessary that the topic /scan to be subscribed is present and that the characteristics of the
+        scanning sensor, contained in the messages, reflect the following characteristics:\n
+        - angle_min = 0.0 rad\n
+        - angle_max &gt;= 6.28 rad\n
+        - range_min &lt;= 0.25 m.\n
+    </string>
+    <string name="voceTimer">TIMER</string>
+    <string name="infoTimer">
+        The timer is used in case the AMCL node is not available or the \'amcl and trajectory correction\' item is not checked.
+        The types of commands compatible with the timer are:\n
+        - FORWARD and BACK\n
+        - RIGHT and LEFT\n
+        \nThe timer, to carry out the command, does not use the current position, but rather the time necessary to execute the
+        command is pre-calculated, using or not, by choice or absence, the relative tables of odometry values.
+        Therefore, the execution of the command using the timer does not allow to correct the trajectory if necessary (eg wheel
+        slip).\n
+    </string>
+    <string name="avantiIndietro">FORWARD and BACK</string>
+    <string name="infoAvantiIndietro">
+        This command can be executed using \'amcl and trajectory correction\' or the \'timer\'.
+        \nThe command allows you to move the robot forwards or backwards. Linear speeds are sent to topic /cmd_vel.
+        \nIn the command you can specify the distance in meters (m) to be traveled or its duration in seconds (s).
+        \n- If the supplied value is negative, the command will be invalid.
+        \n- If unspecified or incorrect, the default value will be 1.0m.
+        \n\nWorking examples:\n
+        - you could go on for 2 meters\n
+        - go back for 10.53 m\n
+        - forward for 5.4 seconds thanks \n
+        - forward ==> {1.0 m}\n
+        </string>
+    <string name="destraSinistra">RIGHT and LEFT</string>
+    <string name="infoDestraSinistra">
+        This command can be executed using \'amcl and trajectory correction\' or the \'timer\'.
+        \nThe command allows you to rotate the robot on itself to the right or left. Angular velocities are sent to topic /cmd_vel.
+        \nIn the command you can specify the angle value in degrees (°) to be performed or the duration of the command in seconds (s).
+        \n- If the supplied value is negative, the command will be invalid.
+        \n- Values greater than 360 degrees are converted following the logic of modular arithmetic \'mod 360\'.
+        \n- If unspecified or incorrect, the default value will be 90°.
+        \n\nWorking examples:\n
+        - turns right 270.5 degrees\n
+        - you could turn left 15 degrees\n
+        - turn right for 3 seconds please\n
+        - left ==> {90.0°}\n
+    </string>
+    <string name="angolo">ANGLE</string>
+    <string name="infoAngolo">
+        The command allows you to orient the robot to the given angle; in order for it to know its current orientation, the menu
+        item \'amcl and trajectory correction\' must be checked and working.
+        \nExcept SPECIAL CASE, it is necessary to specify the value in degrees of the angle to be reached, even negative
+        (eg -90 ° ≡ 270 °).
+        \nValues greater than 360° or less than -360° are converted following the logic of modular arithmetic \'mod 360\'.
+        \n\nWorking examples:\n
+        - angle 200°\n
+        - go to the angle of -90.5 degrees\n
+        - you could go to the 450 degree angle ==> {450° ≡ 90.0° (mod 360)}\n
+        \nNon-working examples.\n
+        - angle {the value is missing}\n
+        - angle 50 meters {the value is not in degrees}\n
+        - angle 5 seconds {the value is not in degrees}\n
+        \nSPECIAL CASE
+        \nFor the single word \'straighten\', or equivalent, if the angle value is not specified, this is considered to be 0.0°.
+        \n\nExamples:\n
+        - straighten up ==> {0.0°}\n
+        - you may straighten up ==> {0.0°}\n
+    </string>
+    <string name="fermo">STOP</string>
+    <string name="infoFermo">
+        The command allows you to stop the robot immediately and cancel the current command.
+        \n\nExamples:\n
+        - you might stop\n
+        - stop\n</string>
+    <string name="vaiInPosizione">GO TO POSITION</string>
+    <string name="infoVaiInPosizione">
+        The command allows you to post a position message (x, y, orientation) on the topic /move_base_simple/goal.
+        \nThe typical usage scenario foresees that: if a node /move_base is started and connected to the same master, it subscribes to the
+        topic and carries out the command by driving the robot autonomously to the position sent.
+        \nA location can be specified:\n
+        - through a saved name\n
+        - indicating the value associated with the components\n
+        \nOPERATION THROUGH THE NAME
+        \nIf you want to use a name, it must have been correctly saved, previously, using a command like \'SAVE POSITION\'.
+        \n\nExamples:\n
+        - go to Mario\n
+        - go to the kitchen\n
+        - you could go to entrance 1 thanks\n
+        \nOPERATION INDICATING THE COMPONENTS
+        \n- Orientation can be specified with the words: \'orientation\', \'omega\' or \'w\'.
+        \n- Within the sentence, the names of the components associated each with a numerical value will be searched first, without order
+        restrictions.
+        \n- If the same components associated with a numerical value are present several times: the first result will be taken and the others
+        eliminated from the sentence.
+        \n- If one or all of the components associated with a value are not present, but only numerical values are present, these values will
+        fill the \'holes\' following a FIFO (first-in, first-out) order.
+        \n- If it is not possible to find the value of x or y in any way, the position will not be sent (the command is not valid).
+        \n- If it is not possible to find only the \'orientation\' in any way, by default, its value will be 0.0 °.
+        \n\nExamples:\n
+        - go to position x -3.4 y 2.3 orientation -15 degrees\n
+         ==> {-3.4, 2.3, -15.0}\n
+        - go to position orientation -90° la y -3,2 and 4\n
+        ==> {4.0, -3.2, 270.0}\n
+        - go to y -4.1 then y -3.2 4.5 x 1.0 y 2.2\n
+        ==> {1.0, -4.1, 4.5}\n
+        - go to y -4.1 then y -3.2 x 1.0 y 2.2\n
+        ==> {1.0, -4.1, 0.0}\n
+        - go to position y -4.1 then y -3.2 1.0 y 2.2\n
+        ==> {1.0, -4.1, 0.0}\n
+        - you could go in position 3.0 -2.3 thanks\n
+        ==> {3.0, -2.3, 0.0}\n
+        - go to 3.0 -2.3 560\n
+        ==> {3.0, -2.3, 200}\n
+        - go to x table y -4.1 then x y -3.2 4.5 orientation 1.0 y 2.2\n
+        ==> {4.5, -4.1, 1.0}\n
+        \nNon-working examples:\n
+        - go to 2.3\n
+        ==> {y is missing}\n
+        - go to position 3.0 orientation -60.3\n
+        ==> {y is missing}\n
+        - go to x rocco y -4.1 then x y -3.2 orientation 1.0 y 2.2\n
+        ==> {x is missing}\n
+        - go to position x 2.0 x 3.0 x 4.0\n
+        ==> {y is missing}\n
+    </string>
+    <string name="salvaPosizione">SAVE THE POSITION</string>
+    <string name="infoSalvaPosizione">
+        To use the command, the topic /acml_pose of the AMCL node must necessarily be available.
+        \nThe command allows you to save the current position published by the topic by associating it with a name.
+        For the command to be valid, the phrase must meet the following conditions:
+        \n- there is an expression similar to the valid examples.
+        \n- the name to be saved respects the form:\n [name/number] [number] (optional).
+        \n- the given name is not a keyword. Example: forward, forward 1, save, x, etc.
+        \n\nValid examples:\n
+        - you could save the position with the name origin thanks\n ==> origin\n
+        - save position as table 1\n ==> table 1\n
+        - hello save position as table 4.4 thanks\n ==> table 4\n
+        - stores this position as table dd1\n ==> table\n
+        - stores this position as position 2\n ==> position 2\n
+        - you could memorize the position with the name table 1rocco thanks\n ==> table 1\n
+    </string>
+    <string name="riposiziona">REPOSITION</string>
+    <string name="infoRiposiziona">
+        This command is the equivalent of the \'2D Pose Estimate\' in RViz. It basically serves to publish a position (x, y, orientation)
+        associated with a covariance matrix, always fixed, on the topic /initialpose.
+        \nThe covariance values present in the matrix between the variables, as RViz does, are equal to 0: that is, there is no relationship
+        between them; while the variance value of the single variables (the elements in the main diagonal) are respectively 0.25, 0.25 and
+        about 0.0685.
+        \nThe typical use of this command foresees that an AMCL node subscribes to the topic and uses the published message to reposition the
+        robot in a certain position in case it gets lost and fails to automatically correct its actual pose in the known environment.
+        \nThere are 2 ways in which it can retrieve the values associated with components (variables).\n
+        \nFIRST WAY
+        \n- Specifying where it should be, indicating its x, y and orientation components.
+        \n- To retrieve the value associated with the components, it uses the same \'operation\' as the \'GO TO POSITION\' type command.
+        \n- In case it fails to obtain a useful result: the second way will be used.
+        \n\nExamples:\n
+        - you can reposition yourself in x 1 y -1,2 and orientation 15.0 thanks\n ==> {1.0, -1.2, 15.0}\n
+        - reposition yourself in x 1 y -1,2\n ==> {1.0, -1.2, 0.0}\n
+        \nSECOND WAY
+        \nIt is particularly useful when the distance from the position where the robot should be is relatively close.
+        \nThe topic /amcl_pose (of the AMCL node) must be available. The first position message posted on the topic, even if wrong, is used
+        to force the repositioning.
+        \n\nExamples:\n
+        - reposition\n
+        - you can reposition yourself in x 1.2 and orientation 0.0\n ==> {the y is missing and so the second way is used}\n
+    </string>
+    <string name="topicUtilizzati">TOPIC ROS</string>
+    <string name="descrizioneTopicUtilizzati">
+        The name and type of message (msg) of all the topics to which the application could subscribe or publish.
+        \nSUBSCRIBER\n
+        name: /amcl/parameter_updates\n <!--sottoscrittore-->
+        msg: dynamic_reconfigure/Config\n\n
+        name: /amcl_pose\n              <!--sottoscrittore-->
+        msg: geometry_msgs/PoseWithCovarianceStamped\n\n
+        name: /clock\n                  <!--sottoscrittore-->
+        msg: /rosgraph_msgs/Clock\n
+        name: /map\n                    <!--sottoscrittore-->
+        msg: nav_msgs/OccupancyGrid\n\n
+        name: /move_base/current_goal\n <!--sottoscrittore-->
+        msg: geometry_msgs/PoseStamped\n\n
+        name: /move_base/NavfnROS/plan\n<!--sottoscrittore-->
+        msg: nav_msgs/Path\n\n
+        name: /odom\n                   <!--sottoscrittore-->
+        msg: nav_msgs/Odometry\n\n
+        name: /scan\n                   <!--sottoscrittore-->
+        msg: sensor_msgs/LaserScan\n\n
+        name: /tf\n                     <!--sottoscrittore-->
+        msg: tf2_msgs/TFMessage\n\n
+        name: /tf_static\n              <!--sottoscrittore-->
+        msg: tf2_msgs/TFMessage\n\n
+        PUBLISHER:\n
+        name: /cmd_vel\n                <!--publica-->
+        msg: geometry_msgs/Twist\n\n
+        name: /initialpose\n            <!-- publica-->
+        msg: geometry_msgs/PoseWithCovarianceStamped\n\n
+        name: /move_base/cancel\n       <!--publica-->
+        msg: actionlib_msgs/GoalID\n\n
+        name: /move_base_simple/goal\n  <!--publica-->
+        msg: geometry_msgs/PoseStamped\n
+    </string>
+    <string name="serviceUtilizzati">SERVICE ROS:</string>
+    <string name="descrizioneServiceUtilizzati">
+        Name: /amcl/set_parameters\n
+        Type: dynamic_reconfigure/Reconfigure\n
+        \n\nDESCRIPTION
+        \nCommunication with the service occurs when the \'amcl and trajectory correction\' menu item is checked and the AMCL node,
+        external to the application, but connected to the same master, is running.
+        \nThis is necessary so that you can receive the position update messages given by topic / amcl_pose as quickly as possible.
+        \nThe operation consists in the automatic change of the value of the following service parameters:\n
+        - update_min_d = 0.0;\n
+        - update_min_a = 0.0;\n
+        \nWhen the application is closed, the parameter values will be restored.\n
+    </string>
+    <!-- toast -->
+    <string name="confAMCL_OK">Sending new AMCL service configuration successful</string>
+    <string name="confAMCL_NO">sending new AMCL service configuration failed</string>
+    <string name="erroreServiceAMCL">it was not possible to connect to the AMCL service</string>
+    <string name="cmdFallito">command not recognized</string>
+    <string name="cmdFallitoNO_AMCL">command failed, try to enable AMCL</string>
+    <string name="obbRagSi">goal achieved!</string>
+    <string name="obbRagNo">goal not achieved</string>
+    <string name="velAngR">reduced angular speed</string>
+    <string name="velLinR">reduced linear speed</string>
+    <string name="obbSuperato">goal exceeded. Reverse speed</string>
+    <string name="timerNuovo">timer reset</string>
+    <string name="timerComandoNo">command not available for timer</string>
+    <string name="problemaInputVocale">the device does not support voice input</string>
+    <string name="problemaTimeout">Error timeout.\nNo response after waiting for 10 seconds.</string>
+    <string name="ostacoloRilevato">obstacle detected!</string>
+    <string name="noLaser">Obstacles cannot be detected. The laser does not meet the required characteristics.</string>
+    <string name="erroreRiposizioneAMCL">Unable to reposition. There is no topic amcl_pose.</string>
+    <string name="okRiposizione">Sending the reposition:</string>
+    <!-- stringhe per masterchoser-->
+    <string name="use_master">Connect</string>
+    <string name="cancel">Cancel</string>
+    <string name="qr_code">Read QRCode</string>
+    <string name="master_uri_hint">http://localhost:11311/</string>
+    <string name="new_master">New Public Master</string>
+    <string name="new_private_master">New Private Master</string>
+    <string name="show_advanced">Show advanced options</string>
+    <string name="select_interface">Select network interface</string>
+    <string name="uri_text">Master URI:</string>
+    <string name="connection_text">Trying to reach master&#8230;</string>
+</resources>
+
+

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:orientation="vertical">
+        <!-- primo elemento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/dimensioniGriglia"
+                android:textSize="20dp"
+                android:textColor="@color/titoli_impostazioni"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="X   "
+                    android:textSize="20dp" />
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderX"
+                    android:theme="@style/TemaApp"
+                    style="@style/SliderGriglia"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Y   "
+                    android:textSize="20dp" />
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/sliderY"
+                    android:theme="@style/TemaApp"
+                    style="@style/SliderGriglia"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/mostraGriglia"
+                    android:textSize="20dp" />
+                <CheckBox
+                    android:id="@+id/check_mostra_griglia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:checked="true"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- secondo elemento impostazioni-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="@string/titoloImpostazioniTabelle"
+                android:textSize="20dp"
+                android:textColor="@color/titoli_impostazioni"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/tabella"
+                    android:textSize="20dp" />
+                <Spinner
+                    android:id="@+id/spinner_tabelle_movimento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:entries="@array/string_spinner_tabelle"
+                    android:textSize="20dp" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <Button
+                    android:id="@+id/bottone_elimina_tabella"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:enabled="false"
+                    android:text="@string/eliminare"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_info_selezionato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <!-- parte sinistra-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textVelocità" />
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textSecondiAcc"
+                    android:text="@string/testoSecondiAcc" />
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textPercosiAcc" />
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textSecondiFre"
+                    android:text="@string/testoSecondiFre"/>
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textPercosiFre" />
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textNumeroOdomMemorizzati"
+                    android:text="@string/testoNumeroOdomMemorizzati" />
+            </LinearLayout>
+            <!-- separatore varticale-->
+            <View style="@style/LineaSeparatriceVerticale"/>
+            <!-- parte destra-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textValoreVelocita"
+                    android:text="0.0" />
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textValoreSecondiAcc"
+                    android:text="0.0" />
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textValorePercorsiAcc"
+                    android:text="0.0"/>
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textValoreSecondiFre"
+                    android:text="0.0"/>
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textValorePercosiFre"
+                    android:text="0.0"/>
+                <TextView style="@style/CasellaInfoMovimento"
+                    android:id="@+id/textValoreOdomMemorizzati"
+                    android:text="0"/>
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/LineaSeparatriceOrizzontale"/>
+        <!-- un altro elemento impostazioni-->
+    </LinearLayout>
+</ScrollView>
+
